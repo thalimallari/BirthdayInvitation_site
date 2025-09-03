@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oh Toodles! You're Invited!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #e10000;
+            --yellow: #ffcc00;
+            --black: #121212;
+            --paper: #fff8ef;
+            --radius-lg: 20px;
+            --shadow: 0 10px 24px rgba(0,0,0,.12);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Fredoka', system-ui, sans-serif;
+            background: linear-gradient(135deg, #ff6666, #ffcc00, #b80000);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            color: var(--black);
+            position: relative;
+        }
+
+        .mickey-ears {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background-color: var(--black);
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .mickey-ears::before,
+        .mickey-ears::after {
+            content: '';
+            position: absolute;
+            top: -60px; /* Adjusted: Moved the ears down to look more natural */
+            width: 100px;
+            height: 100px;
+            background-color: var(--black);
+            border-radius: 50%;
+        }
+
+        .mickey-ears::before {
+            left: -50px;
+        }
+
+        .mickey-ears::after {
+            right: -50px;
+        }
+
+        .card-container {
+            position: relative;
+            background: var(--paper);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            max-width: 450px;
+            width: 90%;
+            margin-top: 150px; /* Adjusted: Pushed the card down to make space */
+        }
+
+        .card-container h2 {
+            font-size: 2.5rem;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+
+        .card-container p {
+            font-size: 1.1rem;
+            color: #4b4b4b;
+            margin-bottom: 20px;
+        }
+
+        .password-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .password-form input {
+            padding: 12px 15px;
+            border: 2px solid var(--yellow);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .password-form input[type="password"] {
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        .password-form button {
+            padding: 12px 20px;
+            background-color: var(--yellow);
+            color: var(--black);
+            font-family: 'Fredoka', cursive;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .password-form button:hover {
+            transform: translateY(-2px);
+            background-color: #ffd94d;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    function checkPassword() {
+        const password = document.getElementById('password').value;
+        if (password === 'Welcome123') {
+            return true;
+        } else {
+            alert('Oh boy! Please enter the magic word!');
+            return false;
+        }
+    }
+</script>
+
+    <div class="mickey-ears"></div>
+
+    <div class="card-container">
+        <h2>Oh Toodles!</h2>
+        <p>Please enter the secret password to see your invitation!</p>
+        
+        <form class="password-form" action="Birthday Invitation.html" onsubmit="return checkPassword();">
+            <input type="password" id="password" placeholder="Password here..." required>
+            <button type="submit">Go to the Party!</button>
+        </form>
+    </div>
+
+</body>
+</html>
