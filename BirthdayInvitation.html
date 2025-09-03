@@ -25,14 +25,14 @@
         margin: 0;
         color: var(--ink);
         background: var(--paper) url('bg_invitation_5.jpg') top left;
-        font-family: "Nunito Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        line-height: 1.6;
+        font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
       }
 
       a { color: var(--red); text-decoration: none; }
       a:hover, a:focus { text-decoration: underline; }
 
-      /* Skip link for accessibility */
+      /* skiplink */
       .skip-link {
         position: absolute; left: -9999px; top: 0; background: #fff
         ; padding: .5rem .75rem; z-index: 1000;
@@ -112,14 +112,14 @@
       ul.clean { list-style: none; padding: 0; margin: .5rem 0 0; }
       ul.clean li { padding: .45rem 0; font-weight: 700; }
 
-      /* CALLOUT */
+      /* co */
       .callout {
         display: grid; gap: 10px; grid-template-columns: 1fr auto; align-items: center; background: #ffffed; border: 2px dashed var(--yellow); padding: 16px; border-radius: 16px;
       }
       .callout strong { font-family: Fredoka, cursive; }
       @media (max-width: 640px) { .callout { grid-template-columns: 1fr; text-align: center; } }
 
-      /* RSVP FORM */
+      /* rvsp*/
       form {
         display: grid; gap: 12px; max-width: 680px; margin: 0 auto;
       }
@@ -147,15 +147,14 @@
 
   
     <header class="hero" role="banner">
-      <h1 class="title">Oh Toodles! You’re Invited</h1>
+      <h1 class="title">Oh Toodles! You’re Invited!</h1>
       <p class="subtitle">A Mickey Mouse Clubhouse Celebration</p>
-      <p class="lead">It’s time for a clubhouse celebration like no other, because <strong>Thali</strong> is turning <strong>1</strong>! <br>Join us for games, giggles, and magical memories.</br></p>
+      <p class="lead">Come and join us for a magical celebration as our little muskeeter <strong>Thali</strong> is turning <strong>1</strong>! <br>It's going to be a day full of giggles, games, and Mickey Mouse magic and it wouldn't be complete without <strong>YOU.</strong></br></p>
     </header>
 
 
     <nav aria-label="Section navigation">
       <div class="nav-inner">
-        <a class="chip" href="#about">About</a>
         <a class="chip" href="#details">Party Details</a>
         
         <a class="chip" href="#gallery">Gallery</a>
@@ -166,12 +165,12 @@
     </nav>
 
     <main id="content">
-      <!-- ABOUT -->
+      <!-- intro -->
       <section id="about" aria-labelledby="about-title">
         <h2 id="about-title">📌 Meet the Birthday Girl</h2>
-        <p>She’s a ball of sunshine — curious, giggly, and always ready to explore the world. Thali loves Disney songs, storytime cuddles, and sharing smiles with everyone around her. This birthday isn’t just about cake and presents; it’s about celebrating the joy she brings into our lives every single day. ♥️</p>
+        <p>From her first smile to her first steps, Thali has filled our lives with joy and love. Now that she's turning a year older, we're excited to celebrate this wonderful milestone with all the people who make her life extra special.♥️</p>
         <div class="callout" role="note" aria-label="Dress code">
-          <p><strong>Dress Code (Optional):</strong> Come in your favorite Disney or bright clubhouse colors — red, yellow, black, and white!</p>
+          <p><strong>Dress Code (Optional):</strong> Wear red, yellow, or come dressed as your favorite Disney characters!</p>
         </div>
       </section>
 
@@ -193,15 +192,18 @@
           </div>
         </div>
         <p style="margin-top:12px">
+
   📍 Need directions? 
-  <a href="https://www.google.com/maps/place/Jollibee+Shaw+Blvd.+Wack+Wack/@14.5862132,121.0452916,17z/data=!4m14!1m7!3m6!1s0x3397c9ce46d7364d:0xfeaca58a1dd424f9!2sJollibee+Shaw+Blvd.+Wack+Wack!8m2!3d14.5862345!4d121.0479294!16s%2Fg%2F11fngpyw8g!3m5!1s0x3397c9ce46d7364d:0xfeaca58a1dd424f9!8m2!3d14.5862345!4d121.0479294!16s%2Fg%2F11fngpyw8g?entry=ttu&g_ep=EgoyMDI1MDgyNC4wIKXMDSoASAFQAw%3D%3D" 
+  <a href="https://www.google.com/maps/place/Jollibee/@14.5891586,121.0358362,17z/data=!3m1!4b1!4m6!3m5!1s0x3397c9d43cf3556f:0x7d9d7bfeb133d238!8m2!3d14.5891586!4d121.0358362!16s%2Fg%2F1tlbr7t0?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D"
      aria-label="Open map in a new tab" 
      target="_blank" 
      rel="noopener">
      Open in Maps
   </a>
 </p>
-<!-- pics ni thali -->
+
+    <!-- pics ni thali -->
+
       <section id="gallery" aria-labelledby="gallery-title">
         <div class="kicker">Memories</div>
         <h2 id="gallery-title">📸 Gallery: Moments with Thali</h2>
@@ -259,6 +261,3 @@
     </footer>
   </body>
 </html>
-
-
-
