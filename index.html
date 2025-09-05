@@ -44,7 +44,7 @@
         .mickey-ears::after {
             content: '';
             position: absolute;
-            top: -60px; /* Adjusted: Moved the ears down to look more natural */
+            top: -60px;
             width: 100px;
             height: 100px;
             background-color: var(--black);
@@ -67,7 +67,7 @@
             box-shadow: var(--shadow);
             max-width: 450px;
             width: 90%;
-            margin-top: 150px; /* Adjusted: Pushed the card down to make space */
+            margin-top: 150px;
         }
 
         .card-container h2 {
@@ -122,29 +122,32 @@
 <body>
 
 <script>
-    function checkPassword() {
+    function checkPassword(event) {
+        event.preventDefault(); // stop the form from submitting
         const password = document.getElementById('password').value;
         if (password === 'Welcome123') {
-            return true;
+            // Redirect to the invitation page (filename must match)
+            window.location.href = 'BirtdayInvitation.html';
         } else {
             alert('Oh boy! Please enter the magic word!');
-            return false;
         }
     }
 </script>
 
-    <div class="mickey-ears"></div>
+<div class="mickey-ears"></div>
 
-    <div class="card-container">
-        <h2>Oh Toodles!</h2>
-        <p> Gosh! I think there’s a big birthday bash coming up... <br> There’s balloon, cake, and somone turning ONE! Do ya know who it is?</br</br></p>
-        
-        <form class="password-form" action="BirtdayInvitation.html" onsubmit="return checkPassword();">
-            <input type="password" id="password" placeholder="Password here..." required>
-            <button type="submit">Go to the Party!</button>
-        </form>
-    </div>
+<div class="card-container">
+    <h2>Oh Toodles!</h2>
+    <p>
+        Gosh! I think there’s a big birthday bash coming up...<br>
+        There’s balloons, cake, and someone turning ONE! Do ya know who it is?
+    </p>
+    
+    <form class="password-form" onsubmit="checkPassword(event);">
+        <input type="password" id="password" placeholder="Password here..." required>
+        <button type="submit">Go to the Party!</button>
+    </form>
+</div>
 
 </body>
 </html>
-
