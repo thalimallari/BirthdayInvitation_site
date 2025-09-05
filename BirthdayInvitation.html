@@ -9,12 +9,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@500&display=swap" rel="stylesheet">
 
     <style>
+
+      #play-music-btn {
+      padding: 12px 24px;
+      background-color: var(--yellow);
+      color: var(--black);
+      font-family: 'Fredoka', cursive;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    #play-music-btn:hover {
+      transform: scale(1.05);
+      background-color: #ffd94d;
+    }
       :root {
         --red: #e10000;
         --yellow: #ffcc00;
         --black: #121212;
         --ink: #2b2b2b;
-        --paper: #fff8ef;
         --card: #ffffffee;
         --radius-lg: 20px;
         --shadow: 0 10px 24px rgba(0,0,0,.12);
@@ -25,7 +43,7 @@
       body {
         margin: 0;
         color: var(--ink);
-        background: var(--paper) url('bg_invitation_5.jpg') top left;
+        background: url('bg_invitation_5.jpg') top left;
         font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   line-height: 1.6;
       }
@@ -57,7 +75,21 @@
         font-family: Fredoka, cursive;
         font-size: clamp(36px, 6vw, 64px);
         letter-spacing: .5px;
+
+        /* Animation */
+        animation: bounce 2s ease-in-out infinite;
       }
+
+      /* keyframes for bounce effect */
+      @keyframes bounce {
+         0%, 100% {
+         transform: translateY(0);
+      }
+         50% {
+         transform: translateY(-10px);
+      }
+      }
+
       .hero .subtitle {
         margin: 0 0 1rem 0;
         font-family: Fredoka, cursive;
@@ -89,10 +121,11 @@
       }
       .kicker { text-transform: uppercase; letter-spacing: .08em; font-weight: 800; color: #000000; font-size: .85rem; }
 
-      /* DETAILS GRID */
+      /* eto ung sa party details box */
+
       .details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
       .details .card {
-        background: #ffffc5; border-radius: 16px; padding: 18px; border: 1px solid #f0f0f0; text-align: center;
+        background: #ffffffee; border-radius: 16px; padding: 18px; border: 3px solid #ffcc00; text-align: center;
       }
       .details .heading { font-weight: 800; color: #000000; margin-bottom: .25rem; }
       .details .value { font-size: 1.05rem; font-weight: 800; }
@@ -100,8 +133,10 @@
 
       /* pics ni tali */
       .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+      /* eto naman yung sa memories na box */
       .gallery-grid img {
-        width: 100%; height: 220px; object-fit: cover; border-radius: 14px; border: 3px solid var(--yellow);
+        width: 100%; height: 220px; object-fit: cover; border-radius: 12px; border: 3px solid var(--yellow);
         box-shadow: 0 8px 20px rgba(0,0,0,.12);
         transition: transform .25s ease;
       }
@@ -144,18 +179,20 @@
     </style>
   </head>
   <body>
+
   
     <header class="hero" role="banner">
-      <h1 class="title">Oh Toodles! You’re Invited!</h1>
+      <h1 class="title" id="bounce">Oh Toodles! You’re Invited!</h1>
       <p class="subtitle">A Mickey Mouse Clubhouse Celebration</p>
-      <p class="lead">Come and join us for a magical celebration as our little muskeeter <strong>Thali</strong> is turning <strong>1</strong>! <br>It's going to be a day full of giggles, games, and Mickey Mouse magic and it wouldn't be complete without <strong>YOU.</strong></br></p>
+      <p class="lead"><br>Our very own little musketeer,<strong> Thali</strong>, is turning <strong>ONE!!!</strong></b><br> <br> Prepare yourself for a celebration bursting with laughter, playful games, and a dash of Mickey Mouse magic that only true friends can bring. This isn’t just any party, it’s a moment to create memories that will twinkle in Thali’s heart forever.</b> </b><br><br>So, bring your brightest smile, your biggest hugs, and your most joyful spirit, because without YOU, this magical day just wouldn’t be complete. Let’s make Thali’s first birthday the happiest adventure! 🌟</b></b></p>
     </header>
+
+ 
 
 
     <nav aria-label="Section navigation">
       <div class="nav-inner">
         <a class="chip" href="#details">Party Details</a>
-        
         <a class="chip" href="#gallery">Gallery</a>
         <a class="chip" href="#gifts">Gift Ideas</a>
         <a class="chip" href="#rsvp">RSVP</a>
@@ -163,10 +200,55 @@
       </div>
     </nav>
 
+
+
     <main id="content">
+
+      <!-- music play -->
+        <!-- music play section -->
+    <section id="about" aria-labelledby="about-title">
+
+     <!--custom play button -->
+     <button id="play-music-btn">🎵 Play Background Music</button>
+
+      <!-- 🔇 Hidden Audio (no controls) -->
+     <audio id="bg-music" loop>
+     <source src="music2.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+     </audio>
+    </section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bg-music');
+    const playBtn = document.getElementById('play-music-btn');
+
+    let isPlaying = false;
+
+    playBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        music.play()
+          .then(() => {
+            isPlaying = true;
+            playBtn.textContent = '⏸ Pause Background Music';
+          })
+          .catch((err) => {
+            console.warn("Autoplay blocked or failed:", err);
+            alert("Please interact with the page to play the music.");
+          });
+      } else {
+        music.pause();
+        isPlaying = false;
+        playBtn.textContent = '🎵 Play Background Music';
+      }
+    });
+  });
+</script>
+
+
       <!-- intro -->
       <section id="about" aria-labelledby="about-title">
-        <h2 id="about-title">📌 Meet the Birthday Girl</h2>
+        <h2 id="about-title">📌Meet the Birthday Girl</h2>
         <p>From her first smile to her first steps, Thali has filled our lives with joy and love. Now that she's turning a year older, we're excited to celebrate this wonderful milestone with all the people who make her life extra special.♥️</p>
         <div class="callout" role="note" aria-label="Dress code">
           <p><strong>Dress Code (Optional):</strong> Wear red, yellow, or come dressed as your favorite Disney characters!</p>
@@ -218,7 +300,7 @@
       <section id="gifts" aria-labelledby="gifts-title">
         <div class="kicker">Optional</div>
         <h2 id="gifts-title">🎁 Gift Ideas</h2>
-        <p>No need to bring anything, but if you're planning to, here are few things that might Thali likes: <br>📚 Storybooks or picture books</b><br>🧩Puzzles or developmental toys</b><br>🧸 Soft plush toys</b><br>Or if you’d rather, monetary gifts are always welcome for Thali's savings 💸</b></p>
+        <p>No need to bring anything, but if you're planning to, here are few things that might Thali likes:<br></b> <br>📚 Storybooks or picture books</b><br>🧩Puzzles or developmental toys</b><br>🧸 Soft plush toys. </b>Or if you’d rather, monetary gifts are always welcome.</p>
       </section>
 
       <!-- rsvp -->
@@ -244,19 +326,24 @@
       <section id="guestbook" aria-labelledby="guestbook-title">
         <div class="kicker">Say Hello</div>
         <h2 id="guestbook-title">💬 Guestbook</h2>
-        <p>We’ll have a real guestbook at the party! Be ready to leave Thali a sweet birthday message or a cute drawing. 🖍️</p>
+        <p>We’re so excited to have a real guestbook at the party! This will be the perfect place for you to leave Thali a sweet birthday message, a heartfelt wish, or even a cute little drawing. Whether it’s a funny memory, a kind word, or just a simple “Happy Birthday,” your message will make Thali’s day extra special and something to remember for years to come.</p>
       </section>
 
       <!-- SEE YOU -->
       <section aria-labelledby="see-you-title">
-        <div class="kicker">Final Note</div>
-        <h2 id="see-you-title">👋 See You There!</h2>
-        <p>We’re so excited to celebrate with you. Come dressed in your favorite Clubhouse colors and let’s make unforgettable memories together. <strong>See ya real soon, pal!</strong> 🎉</p>
+        <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="mickey_waving.gif" align-items: center alt="See You There! GIF">
+        <h2 id="see-you-title"> SEE YOU THERE PALS!</h2>
       </section>
     </main>
 
     <footer role="contentinfo">
-      <p class="legal">Mama made this only for me. Please don't copy the codes thanks!</p>
+      <p class="legal">I made this only for Thali :) </p>
     </footer>
+
+
+
+
+
   </body>
 </html>
