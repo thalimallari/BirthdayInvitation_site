@@ -159,34 +159,46 @@
         const password = document.getElementById('password').value;
         if (password === 'Welcome123') {
             // Redirect to the invitation page (filename must match)
-            window.location.href = 'birthday-invitation.html';
+            window.location.href = 'birthday-invitatio.html';
         } else {
             alert('Oh boy! Please enter the magic word!');
         }
     }
 
-             // Listen for mouse movements anywhere on the page
-    document.addEventListener('mousemove', function(e) {
-        createSparkles(e);
+                 // Wait for the DOM to be fully loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        const button = document.querySelector('button'); // Ensure this is the correct button selector
+
+        if (button) {
+            // Add mouse event listeners to the button
+            button.addEventListener('mouseenter', function (e) {
+                createSparkles(e);
+            });
+
+            button.addEventListener('mousemove', function (e) {
+                createSparkles(e);
+            });
+        }
+
+        // Function to create sparkles at the mouse cursor location
+        function createSparkles(event) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            document.body.appendChild(sparkle);
+
+            const x = event.clientX;
+            const y = event.clientY;
+
+            sparkle.style.left = `${x - 5}px`;  // Position sparkle at the mouse cursor
+            sparkle.style.top = `${y - 5}px`;  // Position sparkle at the mouse cursor
+
+            // Remove the sparkle after animation ends (600ms)
+            setTimeout(() => {
+                sparkle.remove();
+            }, 600);
+        }
     });
 
-    // Function to create sparkles at the mouse cursor location
-    function createSparkles(event) {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        document.body.appendChild(sparkle);
-
-        const x = event.clientX;
-        const y = event.clientY;
-
-        sparkle.style.left = `${x - 5}px`;  // Position sparkle at the mouse cursor
-        sparkle.style.top = `${y - 5}px`;  // Position sparkle at the mouse cursor
-
-        // Remove the sparkle after animation ends (600ms)
-        setTimeout(() => {
-            sparkle.remove();
-        }, 600);
-    }
 
     </script>
 
@@ -207,4 +219,3 @@
 
     </body>
     </html>
-
