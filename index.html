@@ -18,7 +18,7 @@
         body {
             margin: 0;
             font-family: 'Fredoka', system-ui, sans-serif;
-            background-color: var(--yellow);
+            background-color: var(--red);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -117,6 +117,38 @@
             transform: translateY(-2px);
             background-color: #ffd94d;
         }
+
+            /* Sparkle effect */
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            opacity: 1;
+            animation: sparkle 0.5s ease-out infinite;
+            z-index: 9999;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -127,29 +159,51 @@
         const password = document.getElementById('password').value;
         if (password === 'Welcome123') {
             // Redirect to the invitation page (filename must match)
-            window.location.href = 'birthday-invitation.html';
+            window.location.href = 'birthday-invitatio.html';
         } else {
             alert('Oh boy! Please enter the magic word!');
         }
     }
-</script>
 
-<div class="mickey-ears"></div>
+             // Listen for mouse movements anywhere on the page
+    document.addEventListener('mousemove', function(e) {
+        createSparkles(e);
+    });
 
-<div class="card-container">
-    <h2>Oh Toodles!</h2>
-    <p>
-        Gosh! I think there’s a big birthday bash coming up...<br>
-        There’s balloons, cake, and someone turning ONE! Do ya know who it is?
-    </p>
-    
-    <form class="password-form" onsubmit="checkPassword(event);">
-        <input type="password" id="password" placeholder="Password here..." required>
-        <button type="submit">Go to the Party!</button>
-    </form>
-</div>
+    // Function to create sparkles at the mouse cursor location
+    function createSparkles(event) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        document.body.appendChild(sparkle);
 
-</body>
-</html>
+        const x = event.clientX;
+        const y = event.clientY;
 
+        sparkle.style.left = `${x - 5}px`;  // Position sparkle at the mouse cursor
+        sparkle.style.top = `${y - 5}px`;  // Position sparkle at the mouse cursor
 
+        // Remove the sparkle after animation ends (600ms)
+        setTimeout(() => {
+            sparkle.remove();
+        }, 600);
+    }
+
+    </script>
+
+    <div class="mickey-ears"></div>
+
+    <div class="card-container">
+        <h2>Oh Toodles!</h2>
+        <p>
+            Gosh! I think there’s a big birthday bash coming up...<br>
+            There’s balloons, cake, and someone turning ONE! <br>Do ya know who it is?</b>
+        </p>
+        
+        <form class="password-form" onsubmit="checkPassword(event);">
+            <input type="password" id="password" placeholder="Password here..." required>
+            <button type="submit">Go to the Party!</button>
+        </form>
+    </div>
+
+    </body>
+    </html>
