@@ -1,349 +1,536 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Oh Toodles! Thali’s Birthday Invitation 🎈</title>
     <meta name="description" content="You’re invited to Thali’s Mickey Mouse Clubhouse birthday party! See details, highlights, gallery, gift ideas, RSVP and more." />
     
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@500&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --red: #e10000;
+            --yellow: #ffcc00;
+            --black: #121212;
+            --ink: #2b2b2b;
+            --card: #ffffffee;
+            --radius-lg: 20px;
+            --shadow: 0 10px 24px rgba(0,0,0,.12);
+        }
 
-      #play-music-btn {
-      padding: 12px 24px;
-      background-color: var(--yellow);
-      color: var(--black);
-      font-family: 'Fredoka', cursive;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
-    }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: url('bi_background_confetti_2.gif') top left;
+            font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.6;
+        }
+        
+        a { color: var(--red); text-decoration: none; transition: color 0.2s ease-in-out; }
+        a:hover, a:focus { text-decoration: underline; color: var(--black); }
 
-    #play-music-btn:hover {
-      transform: scale(1.05);
-      background-color: #ffd94d;
-    }
-      :root {
-        --red: #e10000;
-        --yellow: #ffcc00;
-        --black: #121212;
-        --ink: #2b2b2b;
-        --card: #ffffffee;
-        --radius-lg: 20px;
-        --shadow: 0 10px 24px rgba(0,0,0,.12);
-      }
+        /* Custom Cursor for Interactive Elements */
+        a, button, .chip, .details .card, .gallery-grid img, #goofy-btn {
+            cursor: url('https://raw.githubusercontent.com/google/mickey-mouse-clubhouse-invitation/main/mickey_glove.png'), pointer;
+        }
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        color: var(--ink);
-        background: url('bg_invitation_5.jpg') top left;
-        font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  line-height: 1.6;
-      }
+        /* --- Header --- */
+        header.hero {
+            background-color: var(--red);
+            color: #ffffed;
+            padding: 64px 16px 48px;
+            border-radius: 0 0 48px 48px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,.25);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 8px solid var(--yellow);
+        }
+        
+        .hero .title {
+            margin: 0 0 .25rem 0;
+            font-family: 'Bangers', cursive;
+            font-size: clamp(36px, 6vw, 64px);
+            letter-spacing: 2px;
+            text-shadow:
+                4px 4px 0 #000,
+                5px 5px 0 var(--yellow),
+                6px 6px 0 var(--yellow),
+                7px 7px 0 var(--yellow);
+            animation: bounce 2s ease-in-out infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .hero .subtitle {
+            margin: 0 0 1rem 0;
+            font-family: 'Fredoka', cursive;
+            font-size: clamp(24px, 3.5vw, 36px);
+            text-shadow: 2px 2px 0 var(--black);
+        }
+        .hero p.lead {
+            max-width: 860px;
+            margin: 0 auto;
+            font-size: clamp(16px, 2.2vw, 20px);
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        }
 
-      a { color: var(--red); text-decoration: none; }
-      a:hover, a:focus { text-decoration: underline; }
+        /* --- Navigation --- */
+        nav {
+            position: sticky; top: 0; z-index: 50;
+            background: #fff; border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto; padding: .5rem 1rem;
+            display: flex; gap: .75rem; flex-wrap: wrap;
+            align-items: center; justify-content: center;
+        }
+        .chip {
+            position: relative;
+            display: inline-block; padding: .5rem .9rem;
+            border-radius: 999px; background: #f6f6f6; border: 1px solid #eaeaea;
+            font-weight: 700;
+            transition: all 0.2s ease-in-out;
+            overflow: hidden;
+        }
+        .chip:hover {
+            background: var(--yellow);
+            border-color: var(--yellow);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .chip::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: url('https://raw.githubusercontent.com/google/mickey-mouse-clubhouse-invitation/main/mickey_ears.png') no-repeat center;
+            background-size: contain;
+            transform: translateX(-50%) scale(0);
+            transition: transform 0.3s ease-out;
+            opacity: 0;
+        }
+        .chip:hover::after {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+        }
 
-      /* skiplink */
-      .skip-link {
-        position: absolute; left: -9999px; top: 0; background: #fff
-        ; padding: .5rem .75rem; z-index: 1000;
-        border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,.15);
-      }
-      .skip-link:focus { left: .75rem; top: .75rem; }
+        /* --- party anthem bg --- */
+        main { padding: 16px; }
+        section {
+            max-width: 1100px; margin: 24px auto; padding: 24px;
+            background: var(--card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        section.is-visible { opacity: 1; transform: translateY(0); }
+        section h2 {
+            margin: 0 0 .5rem 0;
+            font-family: 'Bangers', cursive;
+            color: var(--red);
+            font-size: clamp(22px, 3vw, 32px);
+            letter-spacing: 1px;
+        }
+        .kicker {
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-weight: 800;
+            color: #000000;
+            font-size: .85rem;
+        }
 
-    
-      header.hero {
-        background:
-          radial-gradient(60% 120% at 50% -20%, #ff6666 0%, transparent 60%),
-          linear-gradient(180deg, var(--red), #b80000);
-        color: #ffffed;
-        padding: 64px 16px 48px;
-        border-radius: 0 0 48px 48px;
-        text-align: center;
-        box-shadow: 0 8px 24px rgba(0,0,0,.25);
-      }
-      .hero .title {
-        margin: 0 0 .25rem 0;
-        font-family: Fredoka, cursive;
-        font-size: clamp(36px, 6vw, 64px);
-        letter-spacing: .5px;
+        /* --- Music Button --- */
+        #play-music-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 24px;
+            background-color: var(--yellow);
+            color: var(--black);
+            font-family: 'Fredoka', cursive;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        #play-music-btn:hover {
+            transform: scale(1.05);
+            background-color: #ffd94d;
+        }
 
-        /* Animation */
-        animation: bounce 2s ease-in-out infinite;
-      }
+        /* --- Party Details Cards & Countdown --- */
+        .details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .details .card {
+            background: #ffffffee;
+            border-radius: 16px;
+            padding: 18px;
+            border: 3px solid var(--yellow);
+            text-align: center;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .details .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .details .heading { font-weight: 800; color: #000000; margin-bottom: .25rem; }
+        .details .value { font-size: 1.05rem; font-weight: 800; }
 
-      /* keyframes for bounce effect */
-      @keyframes bounce {
-         0%, 100% {
-         transform: translateY(0);
-      }
-         50% {
-         transform: translateY(-10px);
-      }
-      }
+        .countdown {
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--red);
+            padding: 12px;
+            border: 2px dashed var(--red);
+            border-radius: 12px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .countdown .bubble {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--black);
+            padding: 5px 10px;
+            border-radius: 50%;
+            margin: 0 5px;
+            animation: bubblePop 0.5s ease-out;
+        }
+        @keyframes bubblePop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
 
-      .hero .subtitle {
-        margin: 0 0 1rem 0;
-        font-family: Fredoka, cursive;
-        font-size: clamp(24px, 3.5vw, 36px);
-      }
-      .hero p.lead {
-        max-width: 860px; margin: 0 auto; font-size: clamp(16px, 2.2vw, 20px);
-      }
+        /* --- Gallery --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+        }
+        .gallery-grid img {
+            width: 100%; height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid var(--yellow);
+            box-shadow: 0 8px 20px rgba(0,0,0,.12);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* --- Callout Box --- */
+        .callout {
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px;
+            background: #ffffed;
+            border: 2px dashed var(--yellow);
+            padding: 16px;
+            border-radius: 16px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .callout strong { font-family: 'Fredoka', cursive; }
 
-      
-      nav {
-        position: sticky; top: 0; z-index: 50;
-        background: #fff; border-bottom: 1px solid #eee;
-      }
-      .nav-inner {
-        max-width: 1100px; margin: 0 auto; padding: .5rem 1rem; display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; justify-content: center;
-      }
-      .chip {
-        display: inline-block; padding: .5rem .9rem; border-radius: 999px; background: #f6f6f6; border: 1px solid #eaeaea; font-weight: 700;
-      }
-      .chip:hover { background: #f0f0f0; }
+        /* --- Goofy Pop-up Section --- */
+        #goofy-section {
+            text-align: center;
+        }
+        #goofy-btn {
+            position: relative;
+            padding: 12px 24px;
+            background-color: var(--yellow);
+            color: var(--black);
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        #goofy-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            background-color: #ffd94d;
+        }
+        #goofy-btn::after {
+            content: '🌭';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 2rem;
+            transform: rotate(-10deg) scale(0);
+            transition: transform 0.2s ease-out;
+        }
+        #goofy-btn:hover::after {
+            transform: rotate(-10deg) scale(1);
+        }
+        #goofy-pop-up {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+            margin-top: 1rem;
+        }
+        #goofy-pop-up.show {
+            max-height: 200px;
+            opacity: 1;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            margin-top: 40px;
+            background: var(--black);
+            color: #ffffc5;
+            padding: 28px 16px;
+            text-align: center;
+            border-radius: 36px 36px 0 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .legal { opacity: .85; font-size: .9rem; }
 
-      section {
-        max-width: 1100px; margin: 24px auto; padding: 24px; background: var(--card);
-        border-radius: var(--radius-lg); box-shadow: var(--shadow);
-      }
-      section h2 {
-        margin: 0 0 .5rem 0; font-family: Fredoka, cursive; color: var(--red); font-size: clamp(22px, 3vw, 32px);
-      }
-      .kicker { text-transform: uppercase; letter-spacing: .08em; font-weight: 800; color: #000000; font-size: .85rem; }
-
-      /* eto ung sa party details box */
-
-      .details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-      .details .card {
-        background: #ffffffee; border-radius: 16px; padding: 18px; border: 3px solid #ffcc00; text-align: center;
-      }
-      .details .heading { font-weight: 800; color: #000000; margin-bottom: .25rem; }
-      .details .value { font-size: 1.05rem; font-weight: 800; }
-      @media (max-width: 720px) { .details { grid-template-columns: 1fr; } }
-
-      /* pics ni tali */
-      .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-
-      /* eto naman yung sa memories na box */
-      .gallery-grid img {
-        width: 100%; height: 220px; object-fit: cover; border-radius: 12px; border: 3px solid var(--yellow);
-        box-shadow: 0 8px 20px rgba(0,0,0,.12);
-        transition: transform .25s ease;
-      }
-      .gallery-grid img:hover { transform: translateY(-4px) scale(1.02); }
-      @media (max-width: 960px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 520px) { .gallery-grid { grid-template-columns: 1fr; } }
-
-      
-      ul.clean { list-style: none; padding: 0; margin: .5rem 0 0; }
-      ul.clean li { padding: .45rem 0; font-weight: 700; }
-
-      /* co */
-      .callout {
-        display: grid; gap: 10px; grid-template-columns: 1fr auto; align-items: center; background: #ffffed; border: 2px dashed var(--yellow); padding: 16px; border-radius: 16px;
-      }
-      .callout strong { font-family: Fredoka, cursive; }
-      @media (max-width: 640px) { .callout { grid-template-columns: 1fr; text-align: center; } }
-
-      /* rvsp*/
-      form {
-        display: grid; gap: 12px; max-width: 680px; margin: 0 auto;
-      }
-      label { font-weight: 800; }
-      input, textarea, select {
-        width: 100%; padding: 12px 14px; border: 2px solid #e6e6e6; border-radius: 12px; font: inherit; background: #fff;
-      }
-      input:focus, textarea:focus { outline: 3px solid #ffd24d; border-color: var(--yellow); }
-      textarea { min-height: 120px; resize: vertical; }
-      .btn {
-        display: inline-block; border: 0; background: var(--yellow); color: #000; font-weight: 900; padding: 12px 18px; border-radius: 999px; cursor: pointer;
-        box-shadow: 0 8px 18px rgba(0,0,0,.12);
-      }
-      .btn:hover { filter: brightness(1.05); }
-
-    
-      footer {
-        margin-top: 40px; background: var(--black); color: #ffffc5; padding: 28px 16px; text-align: center; border-radius: 36px 36px 0 0;
-      }
-      .legal { opacity: .85; font-size: .9rem; }
+        /* --- NEW CSS: Hide all content below the music section --- */
+        .hidden-content {
+            display: none;
+        }
     </style>
-  </head>
-  <body>
-
-  
+</head>
+<body>
     <header class="hero" role="banner">
-      <h1 class="title" id="bounce">Oh Toodles! You’re Invited!</h1>
-      <p class="subtitle">A Mickey Mouse Clubhouse Celebration</p>
-      <p class="lead"><br>Our very own little musketeer,<strong> Thali</strong>, is turning <strong>ONE!!!</strong></b><br> <br> Prepare yourself for a celebration bursting with laughter, playful games, and a dash of Mickey Mouse magic that only true friends can bring. This isn’t just any party, it’s a moment to create memories that will twinkle in Thali’s heart forever.</b> </b><br><br>So, bring your brightest smile, your biggest hugs, and your most joyful spirit, because without YOU, this magical day just wouldn’t be complete. Let’s make Thali’s first birthday the happiest adventure! 🌟</b></b></p>
+        <h1 class="title">Oh Toodles! You’re Invited!</h1>
+        <p class="subtitle">A Mickey Mouse Clubhouse Celebration</p>
+        <p class="lead">Our very own little musketeer, <strong>Thali</strong>, is turning <strong>ONE!</strong> Prepare yourself for a celebration bursting with laughter, playful games, and a dash of Mickey Mouse magic that only true friends can bring. This isn’t just any party, it’s a moment to create memories that will twinkle in Thali’s heart forever. So, bring your brightest smile, your biggest hugs, and your most joyful spirit, because without YOU, this magical day just wouldn’t be complete. Let’s make Thali’s first birthday the happiest adventure!</p>
     </header>
 
- 
-
-
-    <nav aria-label="Section navigation">
-      <div class="nav-inner">
-        <a class="chip" href="#details">Party Details</a>
-        <a class="chip" href="#gallery">Gallery</a>
-        <a class="chip" href="#gifts">Gift Ideas</a>
-        <a class="chip" href="#rsvp">RSVP</a>
-        <a class="chip" href="#guestbook">Guestbook</a>
-      </div>
+    <nav class="hidden-content" aria-label="Section navigation">
+        <div class="nav-inner">
+            <a class="chip" href="#details">Party Details</a>
+            <a class="chip" href="#gallery">Gallery</a>
+            <a class="chip" href="#gifts">Gift Ideas</a>
+            <a class="chip" href="#rsvp">RSVP</a>
+            <a class="chip" href="#guestbook">Guestbook</a>
+        </div>
     </nav>
-
-
 
     <main id="content">
 
-      <!-- music play -->
-        <!-- music play section -->
-    <section id="about" aria-labelledby="about-title">
+        <section id="music" aria-labelledby="music-title">
+            <h2 id="music-title" style="text-align: center;"> Party Anthem!</h2>
+            <p style="text-align: center;">Click the button below to play some fun background music for the party!</p>
+            <button id="play-music-btn">🎵 Play Background Music</button>
+            <audio id="bg-music" loop>
+                <source src="music2.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+            </audio>
+        </section>
 
-     <!--custom play button -->
-     <button id="play-music-btn">🎵 Play Background Music</button>
+        <div id="invitation-content" class="hidden-content">
+            <section id="about" aria-labelledby="about-title">
+                <h2 id="about-title">📌 Meet the Birthday Girl</h2>
+                <p>From her first smile to her first steps, Thali has filled our lives with joy and love. Now that she's turning a year older, we're excited to celebrate this wonderful milestone with all the people who make her life extra special. ❤️</p>
+                <div class="callout" role="note" aria-label="Dress code">
+                    <strong>Dress Code (Optional):</strong> Wear red, yellow, or come dressed as your favorite Disney characters!
+                </div>
+            </section>
 
-      <!-- 🔇 Hidden Audio (no controls) -->
-     <audio id="bg-music" loop>
-     <source src="music2.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-     </audio>
-    </section>
+            <section id="details" aria-labelledby="details-title">
+                <div class="kicker">Event Info</div>
+                <h2 id="details-title">📅 Party Details</h2>
+                <div class="details" role="list">
+                    <div class="card" role="listitem">
+                        <div class="heading">Date</div>
+                        <div class="value">December 19, 2025 (Friday)</div>
+                    </div>
+                    <div class="card" role="listitem">
+                        <div class="heading">Time</div>
+                        <div class="value">3:00 PM</div>
+                    </div>
+                    <div class="card" role="listitem">
+                        <div class="heading">Location</div>
+                        <div class="value">Jollibee Acacia Lane, Mandaluyong City</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Jollibee+Acacia+Lane,+Mandaluyong+City" target="_blank" rel="noopener noreferrer">Need location?</a>
+                    </div>
+                </div>
+                <div class="countdown">
+                    <span id="countdown-timer"></span>
+                </div>
+            </section>
 
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const music = document.getElementById('bg-music');
-    const playBtn = document.getElementById('play-music-btn');
+            <section id="gallery" aria-labelledby="gallery-title">
+                <h2 id="gallery-title">📸 Gallery</h2>
+                <div class="gallery-grid">
+                    <img src="thali_1_pic.jpg" alt="thali_1_pic" />
+                    <img src="sample_2" alt="Thali's photo 2" />
+                    <img src="sample_3" alt="Thali's photo 3" />
+                    <img src="sample_4" alt="Thali's photo 4" />
+                </div>
+            </section>
 
-    let isPlaying = false;
+            <section id="gifts" aria-labelledby="gifts-title">
+                <div class="kicker">Optional</div>
+                <h2 id="gifts-title">🎀 Gift Ideas</h2>
+                <p>Your presence is the best present! But if you wish to bring a little something, Thali would be thrilled with:<br><br>
+                📚 Educational toys<br>
+                🧩 Developmental toys<br>
+                🧸 Soft plush toys<br><br>
+                Monetary gifts are also very much appreciated.</p>
+            </section>
 
-    playBtn.addEventListener('click', () => {
-      if (!isPlaying) {
-        music.play()
-          .then(() => {
-            isPlaying = true;
-            playBtn.textContent = '⏸ Pause Background Music';
-          })
-          .catch((err) => {
-            console.warn("Autoplay blocked or failed:", err);
-            alert("Please interact with the page to play the music.");
-          });
-      } else {
-        music.pause();
-        isPlaying = false;
-        playBtn.textContent = '🎵 Play Background Music';
-      }
-    });
-  });
-</script>
+            <section id="rsvp" aria-labelledby="rsvp-title">
+                <div class="kicker">Let Us Know</div>
+                <h2 id="rsvp-title">📬 RSVP</h2>
+                <div style="text-align: center;">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSdh1umTqlAm-QUnPgQf83WjAK2DJoL6SRS1_vm_A9isHKEfvw/viewform?usp=header"
+                        width="100%" 
+                        height="800" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                        Loading…
+                    </iframe>
+                </div>
+            </section>
 
+            <section id="guestbook" aria-labelledby="guestbook-title">
+                <div class="kicker">Say Hello</div>
+                <h2 id="guestbook-title">💌 Guestbook</h2>
+                <p>We’re so excited to have a real guestbook at the party! This will be the perfect place for you to leave Thali a sweet birthday message, a heartfelt wish, or even a cute little drawing. Whether it’s a funny memory, a kind word, or just a simple “Happy Birthday,” your message will make Thali’s day extra special and something to remember for years to come.</p>
+            </section>
 
-      <!-- intro -->
-      <section id="about" aria-labelledby="about-title">
-        <h2 id="about-title">📌Meet the Birthday Girl</h2>
-        <p>From her first smile to her first steps, Thali has filled our lives with joy and love. Now that she's turning a year older, we're excited to celebrate this wonderful milestone with all the people who make her life extra special.♥️</p>
-        <div class="callout" role="note" aria-label="Dress code">
-          <p><strong>Dress Code (Optional):</strong> Wear red, yellow, or come dressed as your favorite Disney characters!</p>
-        </div>
-      </section>
+            <section id="goofy-section" aria-labelledby="goofy-title">
+                <h2 id="goofy-title"> Got a question?</h2>
+                <button id="goofy-btn">Gawrsh! A Goofy Pop-Up!</button>
+                <div id="goofy-pop-up">
+                    <p><strong>Hot dog!</strong> We're so excited you're coming! If you have any questions, you can always reach out to Thali's parents, See ya real soon!</p>
+                </div>
+            </section>
+             </main>
 
-      <section id="details" aria-labelledby="details-title">
-        <div class="kicker">Event Info</div>
-        <h2 id="details-title">📅 Party Details</h2>
-        <div class="details" role="list">
-          <div class="card" role="listitem">
-            <div class="heading">Date</div>
-            <div class="value">December 19, 2025 (Friday)</div>
-          </div>
-          <div class="card" role="listitem">
-            <div class="heading">Time</div>
-            <div class="value">3:00 PM</div>
-          </div>
-          <div class="card" role="listitem">
-            <div class="heading">Location</div>
-            <div class="value">Jollibee Acacia Lane, Mandaluyong City</div>
-          </div>
-        </div>
-        <p style="margin-top:12px">
-
-  📍 Need directions? 
-  <a href="https://www.google.com/maps/place/Jollibee/@14.5891586,121.0358362,17z/data=!3m1!4b1!4m6!3m5!1s0x3397c9d43cf3556f:0x7d9d7bfeb133d238!8m2!3d14.5891586!4d121.0358362!16s%2Fg%2F1tlbr7t0?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D"
-     aria-label="Open map in a new tab" 
-     target="_blank" 
-     rel="noopener">
-     Open in Maps
-  </a>
-</p>
-
-    <!-- pics ni thali -->
-
-      <section id="gallery" aria-labelledby="gallery-title">
-        <div class="kicker">Memories</div>
-        <h2 id="gallery-title">📸 Gallery: Moments with Thali</h2>
-        <div class="gallery-grid">
-          <img src="sample_1" alt="sample_image1" />
-          <img src="sample_2" alt="sample_image2" />
-          <img src="sample_3" alt="sample_image3" />
-          <img src="sample_4" alt="sample_image4" />
-        </div>
-      </section>
-
-      <!-- gifts -->
-      <section id="gifts" aria-labelledby="gifts-title">
-        <div class="kicker">Optional</div>
-        <h2 id="gifts-title">🎁 Gift Ideas</h2>
-        <p>No need to bring anything, but if you're planning to, here are few things that might Thali likes:<br></b> <br>📚 Storybooks or picture books</b><br>🧩Puzzles or developmental toys</b><br>🧸 Soft plush toys. </b>Or if you’d rather, monetary gifts are always welcome.</p>
-      </section>
-
-      <!-- rsvp -->
-<section id="rsvp" aria-labelledby="rsvp-title">
-  <div class="kicker">Let Us Know</div>
-  <h2 id="rsvp-title">📬 RSVP</h2>
-  
-  <!-- Embed Google Form here -->
-  <div style="text-align: center;">
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdh1umTqlAm-QUnPgQf83WjAK2DJoL6SRS1_vm_A9isHKEfvw/viewform?usp=header"
-      width="100%" 
-      height="800" 
-      frameborder="0" 
-      marginheight="0" 
-      marginwidth="0">
-      Loading…
-    </iframe>
-  </div>
-</section>
-
-      <!-- GUESTBOOK -->
-      <section id="guestbook" aria-labelledby="guestbook-title">
-        <div class="kicker">Say Hello</div>
-        <h2 id="guestbook-title">💬 Guestbook</h2>
-        <p>We’re so excited to have a real guestbook at the party! This will be the perfect place for you to leave Thali a sweet birthday message, a heartfelt wish, or even a cute little drawing. Whether it’s a funny memory, a kind word, or just a simple “Happy Birthday,” your message will make Thali’s day extra special and something to remember for years to come.</p>
-      </section>
-
-      <!-- SEE YOU -->
-      <section aria-labelledby="see-you-title">
-        <div style="display: flex; align-items: center; gap: 15px;">
-        <img src="mickey_waving.gif" align-items: center alt="See You There! GIF">
-        <h2 id="see-you-title"> SEE YOU THERE PALS!</h2>
-      </section>
-    </main>
-
-    <footer role="contentinfo">
-      <p class="legal">I made this only for Thali :) </p>
+    <footer role="contentinfo" class="hidden-content">
+        <p class="legal">I made this only for Thali :)</p>
     </footer>
 
+    <script>
+        // Intersection Observer for section fade-in animation
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        sections.forEach(section => {
+            observer.observe(section);
+        });
 
+        // Music player logic
+        window.addEventListener('DOMContentLoaded', () => {
+            const music = document.getElementById('bg-music');
+            const playBtn = document.getElementById('play-music-btn');
+            const invitationContent = document.getElementById('invitation-content');
+            const navBar = document.querySelector('nav');
+            const footer = document.querySelector('footer');
+            
+            let isPlaying = false;
+            
+            playBtn.addEventListener('click', () => {
+                if (!isPlaying) {
+                    // Start playing music
+                    music.play().then(() => {
+                        isPlaying = true;
+                        playBtn.textContent = '⏸ Pause Background Music';
+                        
+                        // Show the hidden content
+                        invitationContent.style.display = 'block';
+                        navBar.style.display = 'block';
+                        footer.style.display = 'block';
 
+                        // Scroll to the main content
+                        invitationContent.scrollIntoView({ behavior: 'smooth' });
 
+                    }).catch((err) => {
+                        console.warn("Autoplay blocked or failed:", err);
+                        alert("Please interact with the page to play the music.");
+                    });
+                } else {
+                    // Pause the music
+                    music.pause();
+                    isPlaying = false;
+                    playBtn.textContent = '🎵 Play Background Music';
+                }
+            });
+        });
 
-  </body>
+        // Goofy Pop-up logic
+        const goofyBtn = document.getElementById('goofy-btn');
+        const goofyPopup = document.getElementById('goofy-pop-up');
+        goofyBtn.addEventListener('click', () => {
+            goofyPopup.classList.toggle('show');
+            if (goofyPopup.classList.contains('show')) {
+                goofyBtn.textContent = 'Oof! Hide Pop-Up';
+            } else {
+                goofyBtn.textContent = 'Gawrsh! A Goofy Pop-Up!';
+            }
+        });
+
+        // Countdown Timer logic
+        const countdownTimer = document.getElementById('countdown-timer');
+        const eventDate = new Date('December 19, 2025 15:00:00').getTime();
+
+        const updateCountdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance > 0) {
+                countdownTimer.innerHTML = `
+                    <span class="bubble">${days}</span> days 
+                    <span class="bubble">${hours}</span> hours 
+                    <span class="bubble">${minutes}</span> minutes 
+                    <span class="bubble">${seconds}</span> seconds
+                `;
+            } else {
+                countdownTimer.innerHTML = "The party has begun! Let's celebrate!";
+                clearInterval(updateCountdown);
+            }
+        }, 1000);
+    </script>
+</body>
 </html>
