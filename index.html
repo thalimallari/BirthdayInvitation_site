@@ -82,24 +82,8 @@
             margin-bottom: 20px;
         }
 
-        .password-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .password-form input {
-            padding: 12px 15px;
-            border: 2px solid var(--yellow);
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .password-form input[type="password"] {
-            font-family: 'Fredoka', sans-serif;
-        }
-        
-        .password-form button {
+        .party-button {
+            display: inline-block;
             padding: 12px 20px;
             background-color: var(--yellow);
             color: var(--black);
@@ -109,99 +93,18 @@
             border: none;
             border-radius: 999px;
             cursor: pointer;
+            text-decoration: none; /* Tanggalin ang underline sa link */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease;
         }
-        
-        .password-form button:hover {
+
+        .party-button:hover {
             transform: translateY(-2px);
             background-color: #ffd94d;
         }
-
-            /* Sparkle effect */
-        .sparkle {
-            position: absolute;
-            pointer-events: none;
-            border-radius: 50%;
-            width: 10px;
-            height: 10px;
-            background: #fff;
-            opacity: 1;
-            animation: sparkle 0.5s ease-out infinite;
-            z-index: 9999;
-        }
-
-        @keyframes sparkle {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            }
-            50% {
-                transform: scale(1.5);
-                opacity: 0.5;
-                box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            }
-        }
-
     </style>
 </head>
 <body>
-
-<script>
-    function checkPassword(event) {
-        event.preventDefault(); // stop the form from submitting
-        const password = document.getElementById('password').value;
-        if (password === 'Welcome123') {
-            // Redirect to the invitation page (filename must match)
-            window.location.href = 'birthday-invitation.html';
-        } else {
-            alert('Oh boy! Please enter the magic word!');
-        }
-    }
-
-                 // Wait for the DOM to be fully loaded
-    document.addEventListener("DOMContentLoaded", function () {
-        const button = document.querySelector('button'); // Ensure this is the correct button selector
-
-        if (button) {
-            // Add mouse event listeners to the button
-            button.addEventListener('mouseenter', function (e) {
-                createSparkles(e);
-            });
-
-            button.addEventListener('mousemove', function (e) {
-                createSparkles(e);
-            });
-        }
-
-        // Function to create sparkles at the mouse cursor location
-        function createSparkles(event) {
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            document.body.appendChild(sparkle);
-
-            const x = event.clientX;
-            const y = event.clientY;
-
-            sparkle.style.left = `${x - 5}px`;  // Position sparkle at the mouse cursor
-            sparkle.style.top = `${y - 5}px`;  // Position sparkle at the mouse cursor
-
-            // Remove the sparkle after animation ends (600ms)
-            setTimeout(() => {
-                sparkle.remove();
-            }, 600);
-        }
-    });
-
-
-    </script>
-
     <div class="mickey-ears"></div>
 
     <div class="card-container">
@@ -210,13 +113,9 @@
             Gosh! I think there’s a big birthday bash coming up...<br>
             There’s balloons, cake, and someone turning ONE! <br>Do ya know who it is?</b>
         </p>
-        
-        <form class="password-form" onsubmit="checkPassword(event);">
-            <input type="password" id="password" placeholder="Password here..." required>
-            <button type="submit">Go to the Party!</button>
-        </form>
+
+        <a href='birthday-invitation.html class="party-button">Go to the Party!</a>
     </div>
 
-    </body>
-    </html>
-
+</body>
+</html>
