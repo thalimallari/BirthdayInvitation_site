@@ -70,25 +70,11 @@
             margin-top: 150px;
         }
 
-        /* --- Updated Text Styles for Whole Word Bounce --- */
-        .bouncing-text {
+        .card-container h2 {
             font-size: 2.5rem;
             color: var(--red);
             margin-bottom: 10px;
-            display: inline-block; /* Mahalaga ito para ma-apply ang transform */
-            animation: bounce 1.2s infinite ease-in-out; /* Bounce animation sa buong element */
         }
-        
-        /* Keyframes para sa Bouncing effect */
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0); /* Normal na posisyon */
-            }
-            50% {
-                transform: translateY(-20px); /* Tatalon pataas ng 20px */
-            }
-        }
-        /* ------------------------------------------------ */
 
         .card-container p {
             font-size: 1.1rem;
@@ -115,6 +101,8 @@
         .party-button:hover {
             transform: translateY(-2px);
             background-color: #ffd94d;
+
+        
         }
     </style>
 </head>
@@ -122,11 +110,10 @@
     <div class="mickey-ears"></div>
 
     <div class="card-container">
-        <h2 class="bouncing-text">Oh Toodles!</h2>
-        
+        <h2>Oh Toodles!</h2>
         <p>
             Gosh! I think there’s a big birthday bash coming up...<br>
-            There’s balloons, cake, and someone turning ONE! <br>Do ya know who it is?
+            There’s balloons, cake, and someone turning ONE! <br>Do ya know who it is?</b>
         </p>
 
         <a href='birthday-invitation.html class="party-button">Go to the Party!</a>
