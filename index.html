@@ -18,7 +18,7 @@
         body {
             margin: 0;
             font-family: 'Fredoka', system-ui, sans-serif;
-            background-color: var(--red);
+            background-color: var(--yellow);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -79,30 +79,31 @@
         .card-container p {
             font-size: 1.1rem;
             color: #4b4b4b;
-            margin-bottom: 20px;
+            margin-bottom: 30px; /* Dinagdagan ang margin para sa button */
         }
-
+        
+        /* Ito ang estilo ng button, inayos ko lang para mas malinaw */
         .party-button {
             display: inline-block;
-            padding: 12px 20px;
+            padding: 12px 30px; /* Ginawang mas malapad */
             background-color: var(--yellow);
             color: var(--black);
             font-family: 'Fredoka', cursive;
-            font-size: 1.1rem;
+            font-size: 1.2rem; /* Ginawang mas malaki */
             font-weight: bold;
             border: none;
             border-radius: 999px;
             cursor: pointer;
             text-decoration: none; /* Tanggalin ang underline sa link */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .party-button:hover {
             transform: translateY(-2px);
             background-color: #ffd94d;
-
-        
         }
     </style>
 </head>
@@ -113,10 +114,12 @@
         <h2>Oh Toodles!</h2>
         <p>
             Gosh! I think there’s a big birthday bash coming up...<br>
-            There’s balloons, cake, and someone turning ONE! <br>Do ya know who it is?</b>
+            There’s balloons, cake, and someone turning ONE! <br>Do ya know who it is?
         </p>
 
-        <a href='birthday-invitation.html class="party-button">Go to the Party!</a>
+        <a href="birthday-invitation.html" class="party-button" **target="_blank"**>
+            Click to see the full invitation! 
+        </a>
     </div>
 
 </body>
